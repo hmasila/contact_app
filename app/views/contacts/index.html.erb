@@ -1,21 +1,29 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
 
-  <% content_for :title, "Contacts" %>
+<h1 class="text-2xl text-center font-bold mb-4">Contacts</h1>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Contacts</h1>
-    <%= link_to "New contact", new_contact_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="contacts" class="min-w-full">
+<table class="min-w-full bg-white shadow-md rounded-lg">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 bg-gray-200">Name</th>
+      <th class="py-2 px-4 bg-gray-200">Email</th>
+      <th class="py-2 px-4 bg-gray-200">Phone</th>
+      <th class="py-2 px-4 bg-gray-200" colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
     <% @contacts.each do |contact| %>
-      <%= render contact %>
-      <p>
-        <%= link_to "Show this contact", contact, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
+      <tr class="border-b">
+        <td class="py-2 px-4"><%= contact.name %></td>
+        <td class="py-2 px-4"><%= contact.email %></td>
+        <td class="py-2 px-4"><%= contact.phone %></td>
+        <td class="py-2 px-4"><%= link_to 'Show', contact, class: 'text-cyan-500' %></td>
+        <td class="py-2 px-4"><%= link_to 'Edit', edit_contact_path(contact), class: 'text-yellow-500' %></td>
+        <td class="py-2 px-4"><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500' %></td>
+      </tr>
     <% end %>
-  </div>
-</div>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contact', new_contact_path, class: 'bg-cyan-500 text-white py-2 px-4 rounded' %>
