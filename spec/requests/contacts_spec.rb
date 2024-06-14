@@ -10,10 +10,19 @@ RSpec.describe "/contacts", type: :request do
   }
 
   describe "GET /index" do
+    before do
+      30.times { Contact.create! valid_attributes } # Create 30 contacts for pagination
+    end
+  
     it "renders a successful response" do
       Contact.create! valid_attributes
       get contacts_url
       expect(response).to be_successful
+    end
+
+    it "paginates the contacts" do
+      get contacts_url, params: { page: 1 }
+      expect(assigns(:contacts).size).to eq(10)
     end
   end
 
