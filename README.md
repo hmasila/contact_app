@@ -47,6 +47,8 @@ rspec
 
 Depending on where you are deploying, you can use capistrano, github actions, ci/cd, manual deployment
 
+The app is currently deployed to Heroku and can be accessed at [www.coderlocs.com](www.coderlocs.com)
+
 ## Architectural Decisions
 - Used Rails scaffold to quickly generate CRUD functionalities.
 - Added basic validations to ensure data integrity.
