@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = Contact.all
+    @pagy, @contacts = pagy(Contact.all, items: 10)
   end
 
   # GET /contacts/1 or /contacts/1.json
