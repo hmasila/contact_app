@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "contacts/new", type: :view do
   before(:each) do
     assign(:contact, Contact.new(
-      name: "MyString",
-      email: "MyString",
-      phone: "MyString"
+      name: "Jane Doe",
+      email: "jane.doe@example.com",
+      phone: "123456789"
     ))
   end
 
