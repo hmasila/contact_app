@@ -1,28 +1,29 @@
 
 <h1 class="text-2xl text-center font-bold mb-4">Contacts</h1>
-
-<table class="min-w-full bg-white shadow-md rounded-lg">
-  <thead>
-    <tr>
-      <th class="py-2 px-4 bg-gray-200">Name</th>
-      <th class="py-2 px-4 bg-gray-200">Email</th>
-      <th class="py-2 px-4 bg-gray-200">Phone</th>
-      <th class="py-2 px-4 bg-gray-200" colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <tr class="border-b">
-        <td class="py-2 px-4"><%= contact.name %></td>
-        <td class="py-2 px-4"><%= contact.email %></td>
-        <td class="py-2 px-4"><%= contact.phone %></td>
-        <td class="py-2 px-4"><%= link_to 'Show', contact, class: 'text-cyan-500' %></td>
-        <td class="py-2 px-4"><%= link_to 'Edit', edit_contact_path(contact), class: 'text-yellow-500' %></td>
-        <td class="py-2 px-4"><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500' %></td>
+<div class="relative overflow-x-auto">
+  <table class="min-w-full bg-white shadow-md rounded-lg font-sans">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 bg-gray-200">Name</th>
+        <th class="py-2 px-4 bg-gray-200">Email</th>
+        <th class="py-2 px-4 bg-gray-200">Phone</th>
+        <th class="py-2 px-4 bg-gray-200" colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr class="border-b">
+          <td class="py-2 px-4"><%= contact.name %></td>
+          <td class="py-2 px-4"><%= contact.email %></td>
+          <td class="py-2 px-4"><%= contact.phone %></td>
+          <td class="py-2 px-4"><%= link_to 'Show', contact, class: 'text-cyan-500' %></td>
+          <td class="py-2 px-4"><%= link_to 'Edit', edit_contact_path(contact), class: 'text-yellow-500' %></td>
+          <td class="py-2 px-4"><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <div class="my-2">
   <%== pagy_nav(@pagy) if @contacts.any? %>
 </div>
